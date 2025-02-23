@@ -1,0 +1,40 @@
+.home-container {
+    margin-top: 8rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-around;
+}
+
+.home-options{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-auth-options{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.home-auth-btn{
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #A76BF0;
+    color: black;
+    padding: 0.76rem 3rem;
+    border-radius: 10px;
+}
+
+.home-auth-btn:hover{
+    background-color: #A76BF0;
+    opacity: 0.8;
+    color: black;
+}

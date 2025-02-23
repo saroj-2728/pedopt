@@ -1,0 +1,13 @@
+.logo-container {
+    /* position: fixed; */
+    /* top: 7px;
+    left: 3px; */
+    display: inline-block;
+}
+
+.logo{
+    width: 110px;
+    height: auto;
+    padding: 0;
+    margin: 8px 0 0 5px;
+}

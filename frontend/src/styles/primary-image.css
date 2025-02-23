@@ -1,0 +1,16 @@
+
+.primary-image{
+    /* width: 70%; */
+    position: relative;
+    border-radius: 15px;
+    background: linear-gradient(to bottom, rgba(186, 146, 223, 0.4), rgba(151, 207, 216, 0.4));
+    mix-blend-mode: multiply; /* This helps blend the gradient with the image */
+    pointer-events: none;
+}
+
+.primary-image img{
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    border-radius: 15px;
+}

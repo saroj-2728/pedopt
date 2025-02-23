@@ -1,0 +1,34 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  /* padding: 2rem; */
+  /* text-align: center; */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.error-message {
+  color: red;
+  display: inline;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.error-message::before {
+  content: "⚠ ";
+}
+
+.success-message {
+  color: green;
+  display: inline;
+  font-size: 0.9rem;
+  text-align: start;
+}
+
+.success-message::before {
+  content: "✅ ";
+}

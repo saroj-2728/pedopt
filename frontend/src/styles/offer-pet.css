@@ -1,0 +1,76 @@
+.op-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.op-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 800px;
+    margin-bottom: 50px;
+    border: 2px solid #A76BF0;
+    border-radius: 10px;
+}
+
+.op-form {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-around;
+    width: 100%;
+    padding: 20px 50px;
+}
+
+.op-form-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    margin: 10px;
+    min-width: 300px;
+}
+
+.op-form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    width: 100%;
+}
+
+.op-form-group input,
+textarea {
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #A76BF0;
+}
+
+.op-form-group input:focus,
+textarea:focus {
+    outline: none;
+    border: 2px solid #007bff;
+}
+
+.op-pet-image-container {
+    display: flex;
+    align-self: flex-start;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    width: 100px;
+}
+
+.op-pet-image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}

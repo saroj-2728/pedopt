@@ -28,14 +28,14 @@
     box-sizing: border-box;
     margin-top: 1rem;
     border-radius: 10px;
-    border: 1px solid #A76BF0;
+    border: 2px solid #A76BF0;
     background-color: white;
     color: black;
 }
 
 .auth-form input:focus {
     outline: none;
-    border: 1px solid blue;
+    border: 2px solid #007bff;
 }
 
 .auth-btn {

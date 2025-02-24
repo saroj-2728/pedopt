@@ -16,6 +16,9 @@
   display: inline;
   font-size: 0.9rem;
   text-align: left;
+  align-self: flex-start;
+  margin: 0;
+  padding: 0;
 }
 
 .error-message::before {

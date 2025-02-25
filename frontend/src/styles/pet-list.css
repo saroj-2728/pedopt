@@ -1,0 +1,24 @@
+.pet-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    padding: 10px 25px;
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.pet-list-main {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: space-between;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.pet-card-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap when needed */
+    gap: 20px; /* Adjust spacing between items */
+}

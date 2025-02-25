@@ -220,14 +220,14 @@ const updatePet = async (req, res) => {
             const uploadPromise = new Promise((resolve, reject) => {
                 const stream = cloudinary.uploader.upload_stream(
                     {
-                        folder: 'real_state_property_images',
+                        folder: 'pedopt_pet_images',
                     },
                     (error, result) => {
                         if (error) reject(error);
                         else resolve(result);
                     }
                 );
-                stream.end(propertyImage.buffer);
+                stream.end(petImage.buffer);
             });
 
             const uploadedImage = await uploadPromise;
@@ -240,7 +240,7 @@ const updatePet = async (req, res) => {
         res.status(200).json({
             success: true,
             message: 'Pet details updated successfully',
-            property
+            pet
         });
     }
     catch (error) {

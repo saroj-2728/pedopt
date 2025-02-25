@@ -1,5 +1,5 @@
-import { useState, useRef } from "react"
-import { Link } from 'react-router'
+import { useState, useRef, useEffect } from "react"
+import { Link, useLocation } from 'react-router'
 import Logo from "../Logo"
 import '../../styles/offer-pet.css'
 import { FaArrowLeftLong } from "react-icons/fa6";
@@ -7,7 +7,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 const OfferPet = () => {
 
   const SERVER_ROOT = import.meta.env.VITE_SERVER_ROOT;
-
+  const location = useLocation()
   const user = JSON.parse(localStorage.getItem('user'))
 
   const [petDetails, setPetDetails] = useState({
@@ -25,10 +25,32 @@ const OfferPet = () => {
   const [errors, setErrors] = useState(null)
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState("")
+  const [isUpdating, setIsUpdating] = useState(false)
+  const [petId, setPetId] = useState("")
 
   const petImageRef = useRef()
 
   const MAX_FILE_SIZE = 1024 * 1024 * 5
+
+  useEffect(() => {
+    if (location?.state) {
+      setIsUpdating(location?.state?.isUpdating)
+      const { petDetails } = location.state
+      setPetDetails({
+        ownerName: petDetails.ownerName,
+        phoneNumber: petDetails.phoneNumber,
+        breed: petDetails.breed,
+        age: petDetails.age,
+        gender: petDetails.gender,
+        type: petDetails.type,
+        description: petDetails.description,
+      })
+      setPetId(petDetails.id)
+      setPetImage(petDetails.petImage)
+      setImagePreview(petDetails.petImage)
+    }
+  }, [location])
+
 
   const validateForm = () => {
     const errors = {}
@@ -40,7 +62,7 @@ const OfferPet = () => {
     }
 
     if (!petDetails.breed.trim()) errors.breed = "Pet Breed is required"
-    if (!petDetails.age.trim()) errors.age = "Pet Age is required"
+    if (!petDetails.age) errors.age = "Pet Age is required"
     if (!petDetails.gender.trim()) errors.gender = "Pet Gender is required"
     if (!petDetails.type.trim()) errors.type = "Pet Type is required"
     if (!petDetails.description.trim()) errors.description = "Pet Description is required"
@@ -90,10 +112,15 @@ const OfferPet = () => {
     formData.append("petImage", petImage);
     formData.append("userId", user.id)
 
+    // formData.forEach((value, key) => {
+    //   console.log(key, value)
+    // })
+    // console.log(`${SERVER_ROOT}/api/${isUpdating ? 'update/' + petId : 'pets/offerPet'}`);
+    // return
     try {
       setLoading(true)
-      const response = await fetch(`${SERVER_ROOT}/api/pets/offerPet`, {
-        method: "POST",
+      const response = await fetch(`${SERVER_ROOT}/api/pets/${isUpdating ? 'update/' + petId : 'offerPet'}`, {
+        method: isUpdating ? "PUT" : "POST",
         body: formData,
       });
 
@@ -107,7 +134,7 @@ const OfferPet = () => {
         return
       }
 
-      setMessage("Pet offered for adoption successfully") //❌
+      setMessage(isUpdating ? "Pet details updated successfully" : "Pet offered for adoption successfully")
       setPetDetails({
         ownerName: '',
         phoneNumber: '',
@@ -277,17 +304,29 @@ const OfferPet = () => {
             {errors && errors.serverError &&
               <p style={{ marginBottom: "10px", alignSelf: "center" }} className="error-message">{errors.serverError}</p>
             }
-            <button
-              type="submit"
-              className="op-submit-btn"
-              disabled={loading}
-            >
-              {loading ? "Submitting..." : "Submit"}
-            </button>
+            <div className="op-form-buttons">
+              {isUpdating &&
+                <Link
+                  to="/my-pet-list"
+                  type="submit"
+                  className="op-cancel-btn"
+                  disabled={loading}
+                >
+                  Cancel
+                </Link>
+              }
+              <button
+                type="submit"
+                className="op-submit-btn"
+                disabled={loading}
+              >
+                {isUpdating ? (loading ? "Updating..." : "Update") : (loading ? "Submitting..." : "Submit")}
+              </button>
+            </div>
           </form>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   )
 }
 
